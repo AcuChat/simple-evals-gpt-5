@@ -10,8 +10,26 @@ We are open sourcing it so we can be transparent about the accuracy numbers we'r
 
 ## Benchmark Results
 
+Notes:
+- Results for SimpleQA on GPT-5 with web search enabled can be found in the `/data` folder.
+- This codebase was modified to run with Python 3.12 
+
+To run this test for yourself (with 5 examples), run:
+
+```
+python -m simple-evals.simple_evals --model gpt-5-web-enabled --eval simpleqa --examples 5
+```
+
+To run the complete SimpleQA benchmark, run:
+
+```
+python -m simple-evals.simple_evals --model gpt-5-web-enabled --eval simpleqa
+```
+
 | Model                        | Prompt        | MMLU   | GPQA [^8]   | MATH [^6]| HumanEval | MGSM[^5] | DROP[^5]<br>(F1, 3-shot) | SimpleQA
 |:----------------------------:|:-------------:|:------:|:------:|:--------:|:---------:|:------:|:--------------------------:|:---------:|
+| **gpt-5**                         |               |        |        |          |           |        |                             |                      |           |
+| gpt-5-web-enabled                | --      |  --  |  --  |   --   |  --     |  --  |  --                      |  95.4     |
 | **o3**                         |               |        |        |          |           |        |                             |                      |           |
 | o3-high [^10]                | n/a [^7]      |  93.3  |  83.4  |   98.1   |  88.4     |  92.0  |  89.8                      |  48.6     |
 | o3 [^9] [^10]                | n/a           |  92.9  |  82.8  |   97.8   |  87.4     |  92.3  |  80.6                      |  49.4     |

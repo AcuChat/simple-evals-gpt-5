@@ -23,6 +23,8 @@ from .sampler.chat_completion_sampler import (
 from .sampler.claude_sampler import ClaudeCompletionSampler, CLAUDE_SYSTEM_MESSAGE_LMSYS
 from .sampler.o_chat_completion_sampler import OChatCompletionSampler
 from .sampler.responses_sampler import ResponsesSampler
+from .sampler.gpt5_web_sampler import GPT5WebSampler
+from .sampler.gpt5_web_responses_sampler import GPT5WebResponsesSampler
 from .simpleqa_eval import SimpleQAEval
 
 
@@ -150,6 +152,17 @@ def main():
         ),
         "gpt-4.1-nano": ChatCompletionSampler(
             model="gpt-4.1-nano-2025-04-14",
+            system_message=OPENAI_SYSTEM_MESSAGE_API,
+            max_tokens=2048,
+        ),
+        # GPT-5 models
+        # "gpt-5-web": GPT5WebSampler(
+        #     model="gpt-5",
+        #     system_message=OPENAI_SYSTEM_MESSAGE_API,
+        #     max_tokens=2048,
+        # ),
+        "gpt-5-web-enabled": GPT5WebResponsesSampler(
+            model="gpt-5",
             system_message=OPENAI_SYSTEM_MESSAGE_API,
             max_tokens=2048,
         ),
